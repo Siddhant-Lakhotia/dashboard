@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="login-container">
+      <h1>Login</h1>
+      <form id="loginForm" onsubmit="return handleLogin(event)">
+        <div class="form-group">
+          <label for="username">User ID</label>
+          <input type="text" id="username" name="username" placeholder="Enter your user ID" required>
+        </div>
+        <div class="form-group password-group">
+          <label for="password">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <div class="eye-icon" id="togglePassword">
+              <div class="eye">
+                <div class="pupil" id="pupil"></div>
+              </div>
+              <div class="cross" id="cross">/</div>
+            </div>
+          </div>
+        </div>
+        <button class="logbutton">Login</button>
+        <p id="error-message"></p>
+      </form>
+    </div>
+    <h1 class="footer">Made By BITS PILANI</h1>
+    <script src="script.js"></script>
+  </body>
+</html>
