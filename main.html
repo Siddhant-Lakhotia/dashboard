@@ -1,28 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Content</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div class="main-content">
-      <h1>Welcome to the Main Content</h1>
-      <p>You're successfully logged in!</p>
-      <button onclick="logout()">Logout</button>
-    </div>
-    <script>
-      // Check if user is logged in
-      if (!localStorage.getItem('loggedIn')) {
-        window.location.href = 'index.html'; // Redirect to login page if not logged in
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Content</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Styles for Header */
+    .header {
+      background: #333;
+      color: white;
+      padding: 0px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100vw;
+      height:10vh;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .menu-button {
+      font-size: 2rem;
+      cursor: pointer;
+      color: white;
+      background: none;
+      border: none;
+      margin: 10px;
+      padding-left:2rem
+    }
+    
+    .logout-button {
+      font-size: 1rem;
+      padding: 7px 10px;
+      background: #555;
+      margin: 0 3rem;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    /* Left-Side Menu */
+    .side-menu {
+      background: #444;
+      backdrop-filter: blur(10px);
+      border: 1px solid #555;
+      color: white;
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: -260px; /* Hidden by default */
+      transition: left 0.3s;
+      padding-top: 10vh; /* Space for the header */
+    }
+    
+    .side-menu a {
+      display: block;
+      padding: 15px;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #555;
+    }
+    
+    .side-menu a:hover {
+      background: #555;
+    }
+    
+    .main-content {
+      margin: 80px 20px 20px 20px; /* Push content below header */
+    }
+    
+    /* Menu Open State */
+    .side-menu.open {
+      left: 0;
+    }
 
-      // Logout function
-      function logout() {
-        localStorage.removeItem('loggedIn');
-        window.location.href = 'index.html'; // Redirect to login page after logout
-      }
-    </script>
-  </body>
+
+    
+
+  </style>
+</head>
+<body>
+  <!-- Header Section -->
+  <div class="header">
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+    <p>PAGE1</p>
+    <button class="logout-button" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Left-Side Menu -->
+  <div class="side-menu" id="sideMenu">
+    <a href="#section0" onclick="updateHeader('Section 0')">Section 0</a>
+    <a href="#section1" onclick="updateHeader('Section 1')">Section 1</a>
+    <a href="#section2" onclick="updateHeader('Section 2')">Section 2</a>
+    <a href="#section3" onclick="updateHeader('Section 3')">Section 3</a>
+    <a href="#section4" onclick="updateHeader('Section 4')">Section 4</a>
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="main-content">
+    <h2 id="section1">Section 1</h2>
+    <p>Content for Section 1 goes here.</p>
+
+    <h2 id="section2">Section 2</h2>
+    <p>Content for Section 2 goes here.</p>
+
+    <h2 id="section3">Section 3</h2>
+    <p>Content for Section 3 goes here.</p>
+  </div>
+
+  <script>
+    // Check if user is logged in
+    if (!localStorage.getItem('loggedIn')) {
+      window.location.href = 'index.html'; // Redirect to login page if not logged in
+    }
+
+    // Logout function
+    function logout() {
+      localStorage.removeItem('loggedIn');
+      window.location.href = 'index.html'; // Redirect to login page after logout
+    }
+
+    // Toggle Side Menu
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      menu.classList.toggle("open");
+    }
+
+    // Update Header with Section Name
+    function updateHeader(sectionName) {
+      document.getElementById("sectionName").textContent = sectionName;
+      toggleMenu(); // Optionally close the menu after selecting a section
+    }
+  </script>
+</body>
 </html>
