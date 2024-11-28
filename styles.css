@@ -176,3 +176,157 @@ body {
 
     width: 100%;
   }
+
+
+
+  .header {
+    background: #333;
+    color: white;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100vw;
+    height: 10vh;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .menu-button {
+    font-size: 2rem;
+    cursor: pointer;
+    color: white;
+    background: none;
+    border: none;
+    margin: 1rem;
+    padding: 0rem 2rem;
+  }
+
+  .logout-button {
+    font-size: 1rem;
+    background: #555;
+    margin: 20px;
+    padding: 10px 1.5rem;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* Left-Side Menu */
+  .side-menu {
+    background: #444;
+    color: white;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -260px; /* Hidden by default */
+    transition: left 0.3s;
+    padding-top: 10vh; /* Space for the header */
+  }
+
+  .side-menu a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #555;
+  }
+
+  .side-menu a:hover {
+    background: #555;
+  }
+
+  .main-content {
+    /* margin-top: ; Push content below header */
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Menu Open State */
+  .side-menu.open {
+    left: 0;
+  }
+
+  /* Dashboard Styling */
+  .dashboard {
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .dashboard h2 {
+    color: #333;
+    text-size-adjust:calc();
+  }
+
+  .dashboard p {
+    color: #555;
+  }
+
+  /* Dashboard Styling Job card printing*/
+  .dashboard_jcp {
+    padding: 30px;
+    padding-top: 55px;
+    text-align: center;
+    background: #777;
+    border-radius: 5%;
+    box-shadow: 0px 0px 35px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    width: 110%;
+    max-width: 500px;
+    max-height: 500px;
+    display: block;
+  }
+  input::placeholder {
+    color: #888;
+    opacity: 1; /* Full visibility for placeholder */
+  }
+  #messageBox {
+    font-size: 1rem;
+    margin-top: 10px;
+    text-align: center;
+  }
+  .dashboard_jcp .img{
+    margin-top:15px ;
+    mix-blend-mode:multiply;
+
+  }
+
+  .dashboard_jcp h2 {
+    color: #000000;
+    padding-bottom: 5%;
+  }
+  .dashboard_jcp input {
+    display: inline;
+    width: 350px;
+    height: 40px;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 40px;
+    margin-bottom: 25px;
+    text-transform: uppercase; /* Automatically capitalize text */
+  }
+  .dashboard_jcp .eximg{
+    height:25px;
+    margin: 0px;
+    display: flex;
+    mix-blend-mode:multiply;
+    transform: translate(1200%,-270%);
+    position: absolute;
+    
+  }
+  .dashboard_jcp p {
+    color: #000000;
+  }
+
+  
