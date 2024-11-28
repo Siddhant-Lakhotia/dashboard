@@ -69,7 +69,7 @@ function handleLogin(event) {
   if (username === correctUsername && password === correctPassword) {
     // Successful login
     localStorage.setItem('loggedIn', true); // Set logged in state in localStorage
-    window.location.href = 'dashboard/index.html'; // Redirect to main content page
+    window.location.href = 'index.html'; // Redirect to main content page
   } else {
     // Display error message
     document.getElementById("error-message").textContent = "Invalid credentials. Please try again.";
