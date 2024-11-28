@@ -1,36 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div class="login-container">
-      <h1>Login</h1>
-      <form id="loginForm" onsubmit="return handleLogin(event)">
-        <div class="form-group">
-          <label for="username">User ID</label>
-          <input type="text" id="username" name="username" placeholder="Enter your user ID" required>
-        </div>
-        <div class="form-group password-group">
-          <label for="password">Password</label>
-          <div class="password-wrapper">
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            <div class="eye-icon" id="togglePassword">
-              <div class="eye">
-                <div class="pupil" id="pupil"></div>
-              </div>
-              <div class="cross" id="cross">/</div>
-            </div>
-          </div>
-        </div>
-        <button class="logbutton">Login</button>
-        <p id="error-message"></p>
-      </form>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Card Printing</title>
+  <link rel="stylesheet" href="../styles.css">
+
+</head>
+<body>
+  <!-- Header Section -->
+  <div class="header">
+    <button class="menu-button" onclick="toggleMenu()">☰</button>
+    <p id="sectionName">Job Card Printing</p>
+    <button class="logout-button" onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Left-Side Menu -->
+  <div class="side-menu" id="sideMenu">
+    <a href="index.html">Job Card Printing</a>
+    <a href="section1.html">Section 1</a>
+    <a href="section2.html">Section 2</a>
+    <a href="section3.html">Section 3</a>
+    <a href="section4.html">Section 4</a>
+  </div>
+
+  <!-- Main Content Section -->
+  <div class="main-content">
+    <div class="dashboard_jcp">
+      <img class="img" src="scanner.png" alt="scanner">
+      <h2>Scan Tray ID</h2>
+      <input 
+        type="text" 
+        placeholder="Scan Tray ID" 
+        id="trayInput" 
+        maxlength="7" 
+        onkeydown="submitOnEnter(event)"
+        oninput="removeSpaces(event)"> <!-- Added space removal handler -->
+      <img class="eximg" src="exscanner.png" alt="Example Scanner">
+      <p id="messageBox"></p>
     </div>
-    <h1 class="footer">Made By BITS PILANI</h1>
-    <script src="script.js"></script>
-  </body>
+  </div>
+
+  <script>
+    // Redirect to login page if not logged in
+    if (!localStorage.getItem('loggedIn')) {
+      window.location.href = '../index.html'; // Redirect to login
+    }
+
+    // Function to toggle the menu visibility
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      menu.classList.toggle("open");
+    }
+
+    // Logout function
+    function logout() {
+      localStorage.removeItem('loggedIn');
+      window.location.href = '../index.html'; // Redirect to login
+    }
+
+    // Handle submission when the Enter key is pressed
+    function submitOnEnter(event) {
+      if (event.key === "Enter") {
+        const trayInput = document.getElementById("trayInput");
+        const messageBox = document.getElementById("messageBox");
+
+        // Capitalize the input before submission
+        const trayID = trayInput.value.trim().toUpperCase();
+
+        if (trayID.length === 7) {
+          // Simulate processing the tray ID
+          messageBox.textContent = `Tray ID "${trayID}" submitted successfully.`;
+          messageBox.style.color = "green";
+          trayInput.value = ""; // Clear the input field after submission
+        } else {
+          // Show an error message if the input is invalid
+          messageBox.textContent = "Please enter a valid 7-character Tray ID.";
+          messageBox.style.color = "red";
+        }
+      }
+    }
+
+    // Remove spaces from input as the user types
+    function removeSpaces(event) {
+      const trayInput = event.target;
+      trayInput.value = trayInput.value.replace(/\s+/g, ''); // Remove all spaces
+    }
+  </script>
+</body>
 </html>
